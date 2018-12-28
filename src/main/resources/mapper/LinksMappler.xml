@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.LinksMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.Links">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="move_name" jdbcType="VARCHAR" property="name" />
+        <result column="link" jdbcType="VARCHAR" property="link" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from links
+    </select>
+
+    <select id="selectByLikeName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from links where links.movie_name like CONCAT(CONCAT('%',#{name},'%'));
+    </select>
+
+</mapper>
